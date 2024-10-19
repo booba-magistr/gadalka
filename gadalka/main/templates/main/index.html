@@ -1,0 +1,62 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Да или Нет</title>
+    <link rel="stylesheet" href="{% static "main/css/style.css" %}">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static "main/images/apple-touch-icon.png" %}">
+    <link rel="icon" type="image/png"  sizes="180x180" href="{% static "main/images/favicon-32x32.png" %}">
+    <link rel="icon" type="image/png"  sizes="180x180" href="{% static "main/images/favicon-16x16.png" %}">
+</head>
+<body>
+    <div class="page">
+        <header>
+            <div class="header-title">Да или Нет</div>
+            <div class="logo">
+                <img src="{% static "main/images/logo.png" %}" alt="yes/not">
+            </div>
+        </header>
+        <section>
+            <form action="" method="post">
+                <input type="text" class="form-input" placeholder="Задайте свой вопрос">
+                <button class="form-btn">Отправить</button>
+            </form>
+            <div class="total-answers">
+                Количество ответов за время существования ресурса: nnn
+            </div>
+            <div class="current-card">
+                <div class="question-and-date">
+                    Задайте свой вопрос
+                    <div class="date">
+                        m/d/y
+                    </div>
+                </div>
+                <div class="answer">Да</div>
+            </div>
+            <p>Последние вопросы:</p>
+            <div class="lst-answers">
+                <div class="card">
+                    <div class="question-and-date">
+                        Задайте свой вопрос
+                        <div class="date">
+                            m/d/y
+                        </div>
+                    </div>
+                    <div class="answer">Нет</div>
+                </div>
+            </div>
+        </section>
+        <footer>
+            <div class="footer-description">
+                Данный сайт не предоставляет достоверные ответы на ваши вопросы.
+                Ресурс создан исключиетльно в развлекательных целях!
+                <p>&#xa9; 2024</p>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
