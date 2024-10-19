@@ -11,7 +11,8 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
-import os 
+import os
+from os import environ 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,10 +22,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-nd%6@kmlf3u3&uu91+s2s148682v!kbul2v4+#5xl@l*7r!xdg'
+SECRET_KEY = environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = environ.get('DEBUG', False)
 
 ALLOWED_HOSTS = []
 
@@ -82,11 +83,11 @@ DATABASES = {
     # }
         'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'gadalka',
-        'USER': 'root',
-        'PASSWORD': '23789163Qw',
-        'HOST': 'postgres',
-        'PORT': 5432
+        'NAME': environ.get('POSTGRES_DB'),
+        'USER': environ.get('POSTGRES_USER'),
+        'PASSWORD': environ.get('POSTGRES_PASSWORD'),
+        'HOST': 'db',
+        'PORT': environ.get('POSTGRES_PORT')
     }
 }
 
