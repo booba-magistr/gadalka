@@ -11,10 +11,10 @@ class HomeView(CreateView, ListView):
     model = MainModel
     template_name = 'main/index.html'
     context_object_name = 'answers'
-    extra_context = {'count': MainModel.objects.all().count()}
+    extra_context = {'count': MainModel.objects.all().count}
     success_url = reverse_lazy('main:home')
 
     def get_initial(self):
         initial = super().get_initial()
-        initial['answer'] = choice(['Да', 'Нет'])
+        initial['answer'] = choice([1, 0])
         return initial
