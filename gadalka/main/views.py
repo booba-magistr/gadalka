@@ -1,6 +1,20 @@
 from django.shortcuts import render
-from django.views.generic import TemplateView
+from django.urls import reverse_lazy
+from django.views.generic import ListView, CreateView, FormView
+from random import choice
+from .models import MainModel
+from .forms import MainForm
 
 # Create your views here.
-class HomeView(TemplateView):
+class HomeView(CreateView, ListView):
+    form_class = MainForm
+    model = MainModel
     template_name = 'main/index.html'
+    context_object_name = 'answers'
+    extra_context = {'count': MainModel.objects.all().count()}
+    success_url = reverse_lazy('main:home')
+
+    def get_initial(self):
+        initial = super().get_initial()
+        initial['answer'] = choice(['Да', 'Нет'])
+        return initial

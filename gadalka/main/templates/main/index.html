@@ -21,12 +21,15 @@
             </div>
         </header>
         <section>
-            <form action="" method="post">
-                <input type="text" class="form-input" placeholder="Задайте свой вопрос">
+            <form method="POST" name='question'>
+                {% csrf_token %}
+                {% for f in form %}
+                {{ f }}
+                {% endfor %}
                 <button class="form-btn">Отправить</button>
             </form>
             <div class="total-answers">
-                Количество ответов за время существования ресурса: nnn
+                Количество вопросов за время существования ресурса: {{ count }}
             </div>
             <div class="current-card">
                 <div class="question-and-date">
