@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Да или Нет</title>
     <link rel="stylesheet" href="{% static "main/css/style.css" %}">
+    <link rel="stylesheet" href="{% static "main/css/media.css" %}">
 
     <link rel="apple-touch-icon" sizes="180x180" href="{% static "main/images/apple-touch-icon.png" %}">
     <link rel="icon" type="image/png"  sizes="180x180" href="{% static "main/images/favicon-32x32.png" %}">
@@ -29,7 +30,7 @@
                 <button class="form-btn">Отправить</button>
             </form>
             <div class="total-answers">
-                Количество вопросов за время существования ресурса: {{ count }}
+                Количество вопросов за всё время: {{ count }}
             </div>
             {% for answer in answers %}
             {% if forloop.first%}
@@ -40,7 +41,7 @@
             style='background-color: rgba(255, 32, 32, 0.747);'
             {% endif %}>
                 <div class="question-and-date">
-                    {{answer.question}}
+                    <div class="question">{{ answer.question }}</div>
                     <div class="date">
                         {{answer.time_create|date:"d.m.Y"}}
                     </div>
@@ -48,8 +49,8 @@
                 <div class="answer">{% if answer.answer %}Да{% else %}Нет{% endif %}</div>
             </div>
             <p>Предыдущие вопросы:</p>
-            {% else %}
             <div class="lst-answers">
+            {% else %}
                 <div class="card"
                 {% if answer.answer %}
                 style='background-color: rgba(116, 216, 116, 0.747);'
@@ -57,15 +58,15 @@
                 style='background-color: rgba(255, 32, 32, 0.747);'
                 {% endif %}>
                     <div class="question-and-date">
-                        {{ answer.question }}
+                        <div class="question">{{ answer.question }}</div>
                         <div class="date">
                             {{ answer.time_create|date:"d.m.Y" }}
                         </div>
                     </div>
                     <div class="answer">{% if answer.answer %}Да{% else %}Нет{% endif %}</div>
                 </div>
-                {% endif %}
-                {% endfor %}
+            {% endif %}
+            {% endfor %}
             </div>
         </section>
         <footer>
