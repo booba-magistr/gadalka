@@ -17,6 +17,7 @@ class HomeView(CreateView, ListView):
     def get_initial(self):
         initial = super().get_initial()
         initial['answer'] = choice([1, 0])
+        initial['session_key'] = self.request.session.session_key
         return initial
     
     def get_queryset(self):

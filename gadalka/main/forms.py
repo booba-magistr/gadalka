@@ -8,7 +8,8 @@ class MainForm(forms.ModelForm):
         fields = 'question', 'answer'
         widgets = {
             'question': forms.TextInput(attrs={'class': 'form-input', 'placeholder': 'Задайте свой вопрос'}),
-            'answer': forms.TextInput(attrs={'style': 'display:none'})
+            'answer': forms.TextInput(attrs={'style': 'display:none'}),
+            'session_key': forms.TextInput(attrs={'style': 'display:none'})
         }
 
     def clean_question(self):
