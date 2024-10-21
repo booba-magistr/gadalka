@@ -18,3 +18,6 @@ class HomeView(CreateView, ListView):
         initial = super().get_initial()
         initial['answer'] = choice([1, 0])
         return initial
+    
+    def get_queryset(self):
+        return super().get_queryset().order_by('-pk')
