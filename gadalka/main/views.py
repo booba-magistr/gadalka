@@ -10,7 +10,7 @@ class HomeView(CreateView, ListView):
     form_class = MainForm
     model = MainModel
     template_name = 'main/index.html'
-    context_object_name = 'answers'
+    context_object_name = 'current_answers'
     extra_context = {'count': MainModel.objects.all().count}
     success_url = reverse_lazy('main:home')
 
@@ -21,4 +21,4 @@ class HomeView(CreateView, ListView):
         return initial
     
     def get_queryset(self):
-        return super().get_queryset().order_by('-pk')
+        return super().get_queryset().filter(session_key=self.request.session.session_key)

@@ -5,7 +5,7 @@ from .models import MainModel
 class MainForm(forms.ModelForm):
     class Meta:
         model = MainModel
-        fields = 'question', 'answer'
+        fields = 'question', 'answer', 'session_key'
         widgets = {
             'question': forms.TextInput(attrs={'class': 'form-input', 'placeholder': 'Задайте свой вопрос'}),
             'answer': forms.TextInput(attrs={'style': 'display:none'}),

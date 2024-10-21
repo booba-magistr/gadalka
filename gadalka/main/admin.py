@@ -4,9 +4,9 @@ from .models import MainModel
 # Register your models here.
 @admin.register(MainModel)
 class MainAdmin(admin.ModelAdmin):
-    fields = 'question', 'get_answer', 'time_create'
-    list_display = 'pk', 'question', 'get_answer', 'time_create'
-    readonly_fields = 'time_create', 'get_answer', 'question'
+    fields = 'question', 'get_answer', 'session_key', 'time_create'
+    list_display = 'pk', 'question', 'get_answer', 'session_key', 'time_create'
+    readonly_fields = 'time_create', 'get_answer', 'question', 'session_key'
     ordering = 'pk',
     list_per_page = 20
     search_fields = 'question',

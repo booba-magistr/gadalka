@@ -1,4 +1,5 @@
 {% load static %}
+{% load answers_tag %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -32,25 +33,30 @@
             <div class="total-answers">
                 Количество вопросов за всё время: {{ count }}
             </div>
-            {% for answer in answers %}
-            {% if forloop.first%}
+            {% if current_answers %}
+            {% for current in current_answers %}
+            {% if forloop.last %}
             <div class="current-card"
-            {% if answer.answer %}
+            {% if current.answer %}
             style='background-color: rgba(116, 216, 116, 0.747);'
             {% else %}
             style='background-color: rgba(255, 32, 32, 0.747);'
             {% endif %}>
                 <div class="question-and-date">
-                    <div class="question">{{ answer.question }}</div>
+                    <div class="question">{{ current.question }}</div>
                     <div class="date">
-                        {{answer.time_create|date:"d.m.Y"}}
+                        {{current.time_create|date:"d.m.Y"}}
                     </div>
                 </div>
-                <div class="answer">{% if answer.answer %}Да{% else %}Нет{% endif %}</div>
+                <div class="answer">{% if current.answer %}Да{% else %}Нет{% endif %}</div>
             </div>
-            <p>Предыдущие вопросы:</p>
+            {% endif %}
+            {% endfor %}
+            {% endif %}
+            <p>История вопросов:</p>
             <div class="lst-answers">
-            {% else %}
+                {% list_answers as answers %}
+                {% for answer in answers %}
                 <div class="card"
                 {% if answer.answer %}
                 style='background-color: rgba(116, 216, 116, 0.747);'
@@ -65,8 +71,7 @@
                     </div>
                     <div class="answer">{% if answer.answer %}Да{% else %}Нет{% endif %}</div>
                 </div>
-            {% endif %}
-            {% endfor %}
+                {% endfor %}
             </div>
         </section>
         <footer>
