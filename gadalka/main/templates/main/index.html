@@ -33,6 +33,7 @@
             {% if form.errors %}
             <div class="total-answers" id='errors'>Вопрос задан некорректно!</div>
             {% endif %}
+            {% current_answer request as current_answers %}
             {% if current_answers %}
             {% for current in current_answers %}
             {% if forloop.last %}
