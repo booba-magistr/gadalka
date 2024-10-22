@@ -1,0 +1,37 @@
+services:
+  web:
+    build:
+      dockerfile: Dockerfile.prod
+      context: ./gadalka
+    image: gadalka_prod:1.0.0
+    command: gunicorn gadalka.wsgi:application --bind 0.0.0.0:8000 --access-logfile "-"
+    volumes:
+      - static_volume:/usr/src/app/static
+    expose:
+      - 8000
+    env_file:
+      - ./gadalka/.env.prod
+
+  db:
+    image: postgres:16-alpine
+    volumes:
+      - data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=23789163Qw
+      - POSTGRES_DB=gadalka
+    
+  nginx:
+    build: ./nginx
+    image: nginx:1.0.0
+    volumes:
+      - static_volume:/app/static
+    ports:
+      - 8001:80
+    depends_on:
+      - db
+
+
+volumes:
+  static_volume:
+  data:

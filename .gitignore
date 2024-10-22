@@ -4,6 +4,7 @@ __pycache__/
 
 .vscode
 .idea
+/gadalka/static/admin
 
 
 db.sqlite3

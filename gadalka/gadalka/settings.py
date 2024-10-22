@@ -27,7 +27,13 @@ SECRET_KEY = environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = environ.get('DEBUG', False)
 
-ALLOWED_HOSTS = ['*']
+if environ.get('ALLOWED_HOSTS'):
+    ALLOWED_HOSTS = environ.get('ALLOWED_HOSTS').split()
+else:
+    ALLOWED_HOSTS = ['*']
+
+if environ.get("CSRF_TRUSTED_ORIGINS"):
+    CSRF_TRUSTED_ORIGINS = environ.get('CSRF_TRUSTED_ORIGINS').split()
 
 
 # Application definition
@@ -127,7 +133,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
-STATIC_ROOT = os.path.join(BASE_DIR / 'static')
+if DEBUG:
+    STATICFILES_DIRS = [
+        BASE_DIR / 'static'
+    ]
+else:
+    STATIC_ROOT = 'static'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field

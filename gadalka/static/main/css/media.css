@@ -1,0 +1,43 @@
+@media (max-width: 970px) {
+    .page {
+        width: 970px;
+    }
+}
+
+@media (max-width: 768px) {
+    .page {
+        width: 768px;
+    }
+
+    .current-card .date {
+        font-size: 0.9em;
+    }
+}
+
+@media (max-width: 485px) {
+    .page {
+        width: 485px;
+    }
+
+    .current-card .answer {
+        font-size: 2em;
+    }
+
+    .current-card .question-and-date {
+        font-size: 1.3em;
+        min-height: 40px;
+    }
+
+    .question {
+        max-width: 65%;
+    }
+
+    input {
+        margin: 0 10px 0 0;
+    }
+
+    .form-btn {
+        width: 110px;
+        font-size: 1.1em;
+    }
+}
