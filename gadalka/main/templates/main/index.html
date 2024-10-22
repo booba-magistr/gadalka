@@ -30,9 +30,9 @@
                 {% endfor %}
                 <button class="form-btn">Отправить</button>
             </form>
-            <div class="total-answers">
-                Количество вопросов за всё время: {{ count }}
-            </div>
+            {% if form.errors %}
+            <div class="total-answers" id='errors'>Вопрос задан некорректно!</div>
+            {% endif %}
             {% if current_answers %}
             {% for current in current_answers %}
             {% if forloop.last %}
@@ -53,6 +53,9 @@
             {% endif %}
             {% endfor %}
             {% endif %}
+            <div class="total-answers">
+                Количество вопросов за всё время: {{ count }}
+            </div>
             <p>История вопросов:</p>
             <div class="lst-answers">
                 {% list_answers as answers %}

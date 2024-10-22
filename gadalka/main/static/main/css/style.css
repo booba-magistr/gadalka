@@ -57,6 +57,10 @@ input {
     color: white;
 }
 
+#errors {
+    background-color: rgba(255, 32, 32, 0.747);
+}
+
 .form-btn {
     width: 200px;
     font-size: 1.4em;

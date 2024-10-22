@@ -16,7 +16,6 @@ class MainForm(forms.ModelForm):
         question = self.cleaned_data['question']
         if len([x for x in question if x.isalpha()])>=2:
             return question
-        else:
-            raise forms.ValidationError('Вопрос задан не корректно')
+        raise forms.ValidationError(message=None)
             
 
